@@ -18,6 +18,12 @@ jobs:
       run: | 
         echo "First Message"
         echo "Second Message"
+    
+    - name: check
+      uses: actions/checkout@v1
+    
+    - name: weight
+      run: ls -la    
        
   build2:
     runs-on: ubuntu-latest
