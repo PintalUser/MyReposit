@@ -1,4 +1,7 @@
 name: CI
+env:
+  Object1: "Value1"
+  Object2: "version is  ${{ github.sha}}"   
 
 on: [push]
 
@@ -10,11 +13,24 @@ jobs:
     steps:
     - name: Run a one-line script
       run: echo "Hello, from Step1!"
+    
+    - name: second opertion
+      run: | 
+        echo "First Message"
+        echo "Second Message"
+      
+      
+      
+      
   
   build2:
     runs-on: ubuntu-latest
-    
+    needs: [build]
     steps:
     - name: Run a multi-line script
       run: echo "Hello, from step2" 
-        
+    - name: Step2 opertions
+      run: |
+        echo " env 1 is ${{env.Object1}}"
+        echo " env 2 is ${{env.Object2}}" 
+      
